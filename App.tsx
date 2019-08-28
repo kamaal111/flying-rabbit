@@ -1,5 +1,5 @@
 import React from 'react';
 
-import Rabbit from './src/components/Rabbit';
+import Game from './src/components/Game';
 
-export default (): JSX.Element => <Rabbit />;
+export default (): JSX.Element => <Game />;
