@@ -1,24 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 
-export default () => (
-  <View style={styles.container}>
+import Background from './Background';
+
+export default (): JSX.Element => (
+  <Background>
     <Image style={styles.image} source={rabbitSource} />
-  </View>
+  </Background>
 );
 
-const rabbitSource = require('../assets/rabbit.png');
+const rabbitSource: any = require('../assets/characters/rabbit.png');
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
   image: {
     position: 'absolute',
-    bottom: 300,
-    left: 100,
-    width: 75,
-    height: 75,
+    bottom: 100,
+    left: 50,
+    width: 50,
+    height: 50,
   },
 });
