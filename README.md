@@ -1,8 +1,8 @@
 ### Setup
 
-#### 1. git clone the repository
-#### 2. cd flappyBird
-#### 3. npm start
+1. git clone the repository
+2. cd flappyBird
+3. npm start
 
 
 ### Running your React Native application
