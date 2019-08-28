@@ -1,4 +1,4 @@
-cd flappyBird
+##cd flappyBird
 npm start
 
 Running your React Native application
