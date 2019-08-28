@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
-export default () => (
+export default (): JSX.Element => (
   <View style={styles.container}>
     <Image style={styles.image} source={rabbitSource} />
   </View>
 );
 
-const rabbitSource = require('../assets/rabbit.png');
+const rabbitSource: any = require('../assets/characters/rabbit.png');
 
 const styles = StyleSheet.create({
   container: {
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    bottom: 300,
-    left: 100,
+    bottom: 100,
+    left: 25,
     width: 75,
     height: 75,
   },
