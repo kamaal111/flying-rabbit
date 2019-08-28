@@ -1,16 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 export default () => (
   <View style={styles.container}>
-    <Text>Hallo!</Text>
+    <Image
+      style={{ width: 200, height: 200 }}
+      source={{
+        uri: 'https://img.itch.zone/aW1nLzE4NDMwODIucG5n/347x500/vE2O3k.png',
+      }}
+    />
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },

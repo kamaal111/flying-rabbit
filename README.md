@@ -1,23 +1,14 @@
-cd flappyBird
-npm start
+### Setup
 
-Your project is ready at /Users/kamaalfarah/Projects/codaisseur/week-9/flappyBird
+1. git clone the repository
+2. cd flappyBird
+3. npm start
 
-Before running your app on iOS, make sure you have CocoaPods installed and initialize the project:
+### Running your React Native application
 
-cd flappyBird/ios
-pod install
-
-Then you can run the project:
-
-cd flappyBird
-yarn android
-yarn ios
-
-Running your React Native application
 Install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer. On Android, use the Expo app to scan the QR code from your terminal to open your project. On iOS, follow on-screen instructions to get a link.
 
-Modifying your app
+### Modifying your app
 
 Now that you have successfully run the app, let's modify it. Open App.js in your text editor of choice and edit some lines. The application should reload automatically once you save your changes.
 
