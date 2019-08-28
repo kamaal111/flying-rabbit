@@ -1,5 +1,5 @@
 import React from 'react';
 
-import Rabbit from './components/Rabbit';
+import Rabbit from './src/components/Rabbit';
 
 export default () => <Rabbit />;
