@@ -1,3 +1,4 @@
+## 1. git clone [link to the repository](git@github.com:kamaal111/flappy-bird.git)
 cd flappyBird
 npm start
 
