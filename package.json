@@ -24,7 +24,10 @@
     "babel-preset-expo": "^6.0.0",
     "jest-expo": "^34.0.0",
     "prettier": "^1.18.2",
-    "typescript": "^3.4.5"
+    "tslint": "^5.19.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
   },
   "jest": {
     "preset": "react-native"

@@ -1,50 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Dimensions, Animated, View, Image } from 'react-native';
+import { default as React, useState, useEffect } from 'react';
+import { Dimensions, Animated, View } from 'react-native';
 
-const Background = (): JSX.Element => {
-  const [fade] = useState(new Animated.Value(0));
-  const [fade2] = useState(new Animated.Value(0));
+import styles from './styles';
+
+export default (): JSX.Element => {
+  const [animation] = useState(new Animated.Value(0));
+
+  const background = require('../../assets/backgrounds/stageLong.png');
+  const screenWidth = Math.round(Dimensions.get('window').width);
+
+  const animations: (value: Animated.Value) => void = value => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(value, {
+          toValue: screenWidth,
+          duration: 3000,
+          delay: 100,
+        }),
+      ]),
+    ).start(() => animations(value));
+  };
 
   useEffect(() => {
-    const animation = value => {
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(value, {
-            toValue: screenWidth,
-            duration: 10000,
-            delay: 0,
-          }),
-        ]),
-        { iterations: 10 },
-      ).start(() => animation(value));
-    };
-
-    animation(fade);
-    animation(fade2);
+    // animations(animation);
   }, []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <View>
-        <Animated.Image source={background} style={{ ...styles.container, right: fade }} />
-      </View>
-
-      <View>
-        <Animated.Image source={background} style={{ ...styles.container, right: fade2 }} />
-      </View>
+      <Animated.Image
+        source={background}
+        style={{ ...styles.backgroundDimensions, right: animation }}
+      />
+      <Animated.Image
+        source={background}
+        style={{ ...styles.backgroundDimensions, right: animation }}
+      />
     </View>
   );
 };
-
-const background = require('../../assets/backgrounds/stageLong.png');
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
-
-const styles = StyleSheet.create({
-  container: {
-    width: screenWidth,
-    height: screenHeight,
-  },
-});
-
-export default Background;
