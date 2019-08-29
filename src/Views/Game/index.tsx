@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
 import Background from '../../components/Background';
-import Rabbit from '../../components/Rabbit';
+import RabbitContainer from '../../components/RabbitContainer';
 
-const styles = StyleSheet.create({
-  container: {},
-});
+import styles from './styles';
 
 const Game = (): JSX.Element => {
   const rabbitSource: number = require('../../assets/characters/rabbit.png');
@@ -14,8 +12,8 @@ const Game = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Background backgroundSource={backgroundSource} />
-      <Rabbit rabbitSource={rabbitSource} />
+      <Background backgroundSource={backgroundSource} styles={styles.backgroundDimensions} />
+      <RabbitContainer rabbitSource={rabbitSource} styles={styles.rabbitImage} />
     </View>
   );
 };
