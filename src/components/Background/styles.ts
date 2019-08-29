@@ -1,7 +1,6 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
+import { screenHeight, screenWidth } from '../../dimensions';
 
 export default StyleSheet.create({
   backgroundDimensions: {
