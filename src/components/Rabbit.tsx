@@ -1,11 +1,5 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, Image } from 'react-native';
-
-// import Background from './Background';
-
-export default (): JSX.Element => {
-  return <Image style={styles.image} source={rabbitSource} />;
-};
 
 const rabbitSource: any = require('../assets/characters/rabbit.png');
 
@@ -18,3 +12,5 @@ const styles = StyleSheet.create({
     height: 50,
   },
 });
+
+export default (): JSX.Element => <Image style={styles.image} source={rabbitSource} />;
