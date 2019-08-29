@@ -1,13 +1,12 @@
 import { default as React, useState, useEffect } from 'react';
-import { Dimensions, Animated, View } from 'react-native';
+import { Animated, View } from 'react-native';
+
+import { screenWidth } from '../../dimensions';
 
 import styles from './styles';
 
-export default (): JSX.Element => {
+export default ({ backgroundSource }): JSX.Element => {
   const [animation] = useState(new Animated.Value(0));
-
-  const background = require('../../assets/backgrounds/stageLong.png');
-  const screenWidth = Math.round(Dimensions.get('window').width);
 
   const animations: (value: Animated.Value) => void = value => {
     Animated.loop(
@@ -28,11 +27,11 @@ export default (): JSX.Element => {
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Animated.Image
-        source={background}
+        source={backgroundSource}
         style={{ ...styles.backgroundDimensions, right: animation }}
       />
       <Animated.Image
-        source={background}
+        source={backgroundSource}
         style={{ ...styles.backgroundDimensions, right: animation }}
       />
     </View>
