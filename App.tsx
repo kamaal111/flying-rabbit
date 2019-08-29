@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+import {} from 'react-native';
 
-import Rabbit from './src/components/Rabbit';
+import Game from './src/Views/Game';
 
-export default (): JSX.Element => <Rabbit />;
+export default (): JSX.Element => <Game />;

@@ -1,26 +1,39 @@
-import React from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
-import PropTypes from 'prop-types';
+import { default as React, useState, useEffect } from 'react';
+import { Animated, View } from 'react-native';
 
-const Background = ({ children }): JSX.Element => {
+import { screenWidth } from '../../dimensions';
+
+import styles from './styles';
+
+export default ({ backgroundSource }): JSX.Element => {
+  const [animation] = useState(new Animated.Value(0));
+
+  const animations: (value: Animated.Value) => void = value => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(value, {
+          toValue: screenWidth,
+          duration: 3000,
+          delay: 100,
+        }),
+      ]),
+    ).start(() => animations(value));
+  };
+
+  useEffect(() => {
+    // animations(animation);
+  }, []);
+
   return (
-    <ImageBackground source={background} style={styles.container}>
-      {children}
-    </ImageBackground>
+    <View style={{ flex: 1, flexDirection: 'row' }}>
+      <Animated.Image
+        source={backgroundSource}
+        style={{ ...styles.backgroundDimensions, right: animation }}
+      />
+      <Animated.Image
+        source={backgroundSource}
+        style={{ ...styles.backgroundDimensions, right: animation }}
+      />
+    </View>
   );
 };
-
-const background = require('../../assets/backgrounds/stage1.png');
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-  },
-});
-
-Background.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Background;
