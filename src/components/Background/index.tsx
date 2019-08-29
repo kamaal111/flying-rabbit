@@ -1,39 +1,31 @@
-import { default as React, useState, useEffect } from 'react';
+import { default as React, useEffect } from 'react';
 import { Animated, View } from 'react-native';
 
+import types from './types';
 import { screenWidth } from '../../dimensions';
 
-import styles from './styles';
+const Background = ({ backgroundSource, styles }): JSX.Element => {
+  const animationValue: Animated.Value = new Animated.Value(0);
 
-export default ({ backgroundSource }): JSX.Element => {
-  const [animation] = useState(new Animated.Value(0));
-
-  const animations: (value: Animated.Value) => void = value => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(value, {
-          toValue: screenWidth,
-          duration: 3000,
-          delay: 100,
-        }),
-      ]),
-    ).start(() => animations(value));
+  const animations: () => void = () => {
+    return Animated.loop(
+      Animated.timing(animationValue, {
+        toValue: screenWidth,
+        duration: 3000,
+      }),
+    ).start(() => animations());
   };
 
-  useEffect(() => {
-    // animations(animation);
-  }, []);
+  // useEffect(() => animations(), []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <Animated.Image
-        source={backgroundSource}
-        style={{ ...styles.backgroundDimensions, right: animation }}
-      />
-      <Animated.Image
-        source={backgroundSource}
-        style={{ ...styles.backgroundDimensions, right: animation }}
-      />
+      <Animated.Image source={backgroundSource} style={{ ...styles, right: animationValue }} />
+      <Animated.Image source={backgroundSource} style={{ ...styles, right: animationValue }} />
     </View>
   );
 };
+
+Background.propTypes = { types };
+
+export default Background;
