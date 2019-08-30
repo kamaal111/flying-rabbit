@@ -26,9 +26,9 @@ const Background = ({ backgroundSource, carrotSource }): JSX.Element => {
     ).start(() => animations());
   };
 
-  // useEffect(() => {
-  //   animations();
-  // }, []);
+  useEffect(() => {
+    animations();
+  }, []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
