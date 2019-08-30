@@ -1,5 +1,5 @@
 import { default as React, useState } from 'react';
-import { Animated, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Animated, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import types from './types';
 import { screenHeight, screenWidth } from '../../dimensions';
@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     height: screenHeight / 10,
     // centers rabbit
     transform: [
-      { translateY: -(screenHeight / 20) }
+      { translateY: -(screenHeight / 20) },
+      { rotate: '0deg' }
     ]
   },
   halfScreen: {
@@ -26,6 +27,42 @@ const styles = StyleSheet.create({
 const Rabbit = ({ rabbitSource }): JSX.Element => {
   const [count, setCount] = useState(screenHeight / 2);
 
+  const animationValue: Animated.Value = new Animated.Value(count);
+
+  let rabbitPosition: number;
+
+  const rabbitAnimation: (string) => void = (direction) => {
+    if (direction === 'up') {
+      return (
+        Animated.timing(animationValue, {
+          toValue: count - (screenHeight / 8),
+          duration: 120,
+          // ensures animation is constant
+          easing: Easing.linear,
+        }).start(() => setCount(count - (screenHeight / 8)))
+      )
+    }
+    else if (direction === 'down') {
+      return (
+        Animated.timing(animationValue, {
+          toValue: count + (screenHeight / 8),
+          duration: 120,
+          easing: Easing.linear
+        }).start(() => setCount(count + (screenHeight / 8)))
+      )
+    }
+  };
+
+const rabbitGoUp: () => void = () => {
+  rabbitAnimation('up')
+  styles.rabbitImage.transform[1].rotate = '-15deg'
+}
+
+const rabbitGoDown: () => void = () => {
+  rabbitAnimation('down')
+  styles.rabbitImage.transform[1].rotate = '15deg'
+}
+
   return (
     <>
       <Text
@@ -37,7 +74,7 @@ const Rabbit = ({ rabbitSource }): JSX.Element => {
         {count}
       </Text>
       <TouchableOpacity
-        onPressIn={() => setCount(count - 30)}
+        onPressIn={() => rabbitGoUp()}
         style={{
           ...styles.halfScreen,
           top: 0,
@@ -46,10 +83,10 @@ const Rabbit = ({ rabbitSource }): JSX.Element => {
         }}
       />
 
-      <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
+      <Animated.Image style={{ ...styles.rabbitImage, top: animationValue }} source={rabbitSource} />
 
       <TouchableOpacity
-        onPressIn={() => setCount(count + 30)}
+        onPressIn={() => rabbitGoDown()}
         style={{
           ...styles.halfScreen,
           top: screenHeight / 2,
