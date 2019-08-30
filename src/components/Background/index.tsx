@@ -12,11 +12,14 @@ const Background = ({ backgroundSource, styles }): JSX.Element => {
       Animated.timing(animationValue, {
         toValue: screenWidth,
         duration: 3000,
+        delay: 0,
       }),
     ).start(() => animations());
   };
 
-  // useEffect(() => animations(), []);
+  // useEffect(() => {
+  //   animations();
+  // }, []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
