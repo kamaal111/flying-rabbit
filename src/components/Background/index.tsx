@@ -1,5 +1,5 @@
 import { default as React, useEffect } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, View, Easing } from 'react-native';
 
 import types from './types';
 import { screenWidth } from '../../dimensions';
@@ -13,13 +13,15 @@ const Background = ({ backgroundSource, styles }): JSX.Element => {
         toValue: screenWidth,
         duration: 3000,
         delay: 0,
+        // ensures animation is constant
+        easing: Easing.bezier(0, 0, 0, 0)
       }),
     ).start(() => animations());
   };
 
-  // useEffect(() => {
-  //   animations();
-  // }, []);
+  useEffect(() => {
+    animations();
+  }, []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
