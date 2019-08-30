@@ -1,43 +1,55 @@
-import { default as React, useState } from 'react';
-import { Animated, TouchableOpacity, Text } from 'react-native';
+import { default as React, useState, useEffect } from 'react';
+import { View, Image, Animated, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import types from './types';
-import { screenHeight } from '../../dimensions';
+import { screenHeight, screenWidth } from '../../dimensions';
 
-const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 1.2);
-  // const value = new Animated.Value(count);
+const styles = StyleSheet.create({
+  rabbitImage: {
+    position: 'absolute',
+    left: 50,
+    width: screenHeight / 10,
+    height: screenHeight / 10,
+  },
+  halfScreen: {
+    position: 'absolute',
+    left: 0,
+    height: screenHeight / 2,
+    width: screenWidth,
+  },
+});
 
-  // const animations: () => void = () => {
-  //   return Animated.sequence([
-  //     Animated.timing(value, {
-  //       toValue: count - 30,
-  //       duration: 0,
-  //       delay: 0,
-  //     }),
-  //   ]).start(() => setCount(count - 30));
-  // };
+const Rabbit = ({ rabbitSource }): JSX.Element => {
+  const [count, setCount] = useState(screenHeight / 2.3);
 
   return (
     <>
       <Text
         style={{
           position: 'absolute',
-          top: screenHeight / 3,
-          left: 50,
+          top: screenHeight / 10,
+          right: 50,
         }}>
         {count}
       </Text>
       <TouchableOpacity
         onPressIn={() => setCount(count - 30)}
-        style={{ ...styles, backgroundColor: 'yellow', top: count - 30 }}
+        style={{
+          ...styles.halfScreen,
+          top: 0,
+          borderBottomColor: 'black',
+          borderBottomWidth: 2,
+        }}
       />
       <TouchableOpacity onPressIn={() => console.log('press in')}>
-        <Animated.Image style={{ ...styles, top: count }} source={rabbitSource} />
+        <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
       </TouchableOpacity>
       <TouchableOpacity
         onPressIn={() => setCount(count + 30)}
-        style={{ ...styles, backgroundColor: 'yellow', top: count + 30 }}
+        style={{
+          ...styles.halfScreen,
+          top: screenHeight / 2,
+        }}
       />
     </>
   );
