@@ -13,8 +13,8 @@ const Game = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Background backgroundSource={backgroundSource} styles={styles.backgroundDimensions} />
-      <View style={{ ...styles.container, backgroundColor: 'black' }}>
+      <Background backgroundSource={backgroundSource} carrotSource={carrotSource} styles={styles.backgroundDimensions} />
+      {/* <View style={{ ...styles.container, backgroundColor: 'black' }}>
         <Image
           style={{
             width: 40,
@@ -22,7 +22,7 @@ const Game = (): JSX.Element => {
           }}
           source={carrotSource}
         />
-      </View>
+      </View> */}
       <RabbitContainer rabbitSource={rabbitSource} styles={styles.rabbitImage} />
     </View>
   );

@@ -1,5 +1,5 @@
-import { default as React, useState } from 'react';
-import { Animated, TouchableOpacity, Text } from 'react-native';
+import { default as React, useState, useEffect } from 'react';
+import { View, Image, Animated, Easing, TouchableOpacity, Text } from 'react-native';
 
 import types from './types';
 import { screenHeight, screenWidth } from '../../dimensions';

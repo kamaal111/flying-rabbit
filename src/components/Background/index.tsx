@@ -4,7 +4,7 @@ import { Animated, View, Easing, Image } from 'react-native';
 import types from './types';
 import { screenWidth } from '../../dimensions';
 
-const Background = ({ backgroundSource, styles }): JSX.Element => {
+const Background = ({ backgroundSource, carrotSource, styles }): JSX.Element => {
   const animationValue: Animated.Value = new Animated.Value(0);
 
   const animations: () => void = () => {
@@ -19,14 +19,16 @@ const Background = ({ backgroundSource, styles }): JSX.Element => {
     ).start(() => animations());
   };
 
-  // useEffect(() => {
-  //   animations();
-  // }, []);
+  useEffect(() => {
+    animations();
+  }, []);
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Animated.Image source={backgroundSource} style={{ ...styles, right: animationValue }} />
       <Animated.Image source={backgroundSource} style={{ ...styles, right: animationValue }} />
+      <Animated.Image source={carrotSource} style={{ ...styles, right: animationValue }} />
+      <Animated.Image source={carrotSource} style={{ ...styles, right: animationValue }} />
     </View>
   );
 };
