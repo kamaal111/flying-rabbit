@@ -9,7 +9,7 @@ import styles from './styles';
 const Game = (): JSX.Element => {
   const rabbitSource: number = require('../../assets/characters/rabbit.png');
   const backgroundSource: number = require('../../assets/backgrounds/stageLong.png');
-  const carrotSource: number = require('../../assets/carrot.png');
+  const carrotSource: number = require('../../assets/collectables/carrot.png');
 
   return (
     <View style={styles.container}>
