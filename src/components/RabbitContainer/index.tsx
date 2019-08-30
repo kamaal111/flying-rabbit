@@ -83,8 +83,8 @@ const rabbitGoDown: () => void = () => {
         }}
       />
 
-      <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
-      
+      <Animated.Image style={{ ...styles.rabbitImage, top: animationValue }} source={rabbitSource} />
+
       <TouchableOpacity
         onPressIn={() => rabbitGoDown()}
         style={{

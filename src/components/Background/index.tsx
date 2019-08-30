@@ -32,9 +32,9 @@ const Background = ({ backgroundSource, carrotSource }): JSX.Element => {
     ).start(() => animations());
   };
 
-  useEffect(() => {
-    animations();
-  }, []);
+  // useEffect(() => {
+  //   animations();
+  // }, []);
 
   const renderBackground: (key: number) => JSX.Element = key => (
     <Animated.Image
