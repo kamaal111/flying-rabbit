@@ -2,6 +2,7 @@
 
 1. git clone `git@github.com:kamaal111/flappy-bird.git`
 2. cd flappyBird
+3. `npm install` to install dependencies
 
 
 ### Running and modifying your React Native application
