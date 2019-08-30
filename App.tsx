@@ -1,6 +1,20 @@
 import * as React from 'react';
-import {} from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Game from './src/Views/Game';
+import StartGame from './src/Views/StartGame';
 
-export default (): JSX.Element => <Game />;
+const AppNavigator = createAppContainer(
+  createStackNavigator(
+    {
+      StartGameScreen: { screen: StartGame },
+      GameScreen: { screen: Game },
+    },
+    {
+      initialRouteName: 'StartGameScreen',
+      headerMode: 'none',
+    },
+  ),
+);
+
+export default (): JSX.Element => <AppNavigator />;

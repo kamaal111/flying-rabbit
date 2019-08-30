@@ -1,5 +1,5 @@
 import { default as React, useEffect } from 'react';
-import { Animated, View, Easing, Image } from 'react-native';
+import { Animated, View, Easing } from 'react-native';
 
 import types from './types';
 import { screenWidth } from '../../dimensions';
