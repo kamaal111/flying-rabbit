@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
   },
+  carrot: {
+    position: 'absolute',
+    right: 0,
+    width: screenHeight / 10,
+    height: screenHeight / 10,
+  },
 });
 
 const Background = ({ backgroundSource, carrotSource }): JSX.Element => {
@@ -30,24 +36,30 @@ const Background = ({ backgroundSource, carrotSource }): JSX.Element => {
   //   animations();
   // }, []);
 
+  const renderBackground: (key: number) => JSX.Element = key => (
+    <Animated.Image
+      key={key}
+      source={backgroundSource}
+      style={{ ...styles.backgroundDimensions, right: animationValue }}
+    />
+  );
+
+  const renderCarrot: (key: number) => JSX.Element = key => (
+    <Animated.Image
+      key={key}
+      source={carrotSource}
+      style={{
+        ...styles.carrot,
+        top: Math.floor(Math.random() * screenHeight),
+        right: animationValue,
+      }}
+    />
+  );
+
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <Animated.Image
-        source={backgroundSource}
-        style={{ ...styles.backgroundDimensions, right: animationValue }}
-      />
-      <Animated.Image
-        source={backgroundSource}
-        style={{ ...styles.backgroundDimensions, right: animationValue }}
-      />
-      <Animated.Image
-        source={carrotSource}
-        style={{ ...styles.backgroundDimensions, right: animationValue }}
-      />
-      <Animated.Image
-        source={carrotSource}
-        style={{ ...styles.backgroundDimensions, right: animationValue }}
-      />
+      {[0, 1].map(element => renderBackground(element))}
+      {[0, 1, 2, 3, 4, 5].map(element => renderCarrot(element))}
     </View>
   );
 };

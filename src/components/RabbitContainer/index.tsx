@@ -1,5 +1,5 @@
-import { default as React, useState, useEffect } from 'react';
-import { View, Image, Animated, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { default as React, useState } from 'react';
+import { Animated, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import types from './types';
 import { screenHeight, screenWidth } from '../../dimensions';
@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     left: 50,
     width: screenHeight / 10,
     height: screenHeight / 10,
+    // centers rabbit
+    transform: [
+      { translateY: -(screenHeight / 20) }
+    ]
   },
   halfScreen: {
     position: 'absolute',
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 const Rabbit = ({ rabbitSource }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 2.3);
+  const [count, setCount] = useState(screenHeight / 2);
 
   return (
     <>
@@ -41,9 +45,9 @@ const Rabbit = ({ rabbitSource }): JSX.Element => {
           borderBottomWidth: 2,
         }}
       />
-      <TouchableOpacity onPressIn={() => console.log('press in')}>
-        <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
-      </TouchableOpacity>
+
+      <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
+
       <TouchableOpacity
         onPressIn={() => setCount(count + 30)}
         style={{
