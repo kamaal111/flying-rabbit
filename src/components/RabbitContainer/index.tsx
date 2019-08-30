@@ -2,10 +2,10 @@ import { default as React, useState } from 'react';
 import { Animated, TouchableOpacity, Text } from 'react-native';
 
 import types from './types';
-import { screenHeight } from '../../dimensions';
+import { screenHeight, screenWidth } from '../../dimensions';
 
 const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 1.2);
+  const [count, setCount] = useState(screenHeight / 2.3);
   // const value = new Animated.Value(count);
 
   // const animations: () => void = () => {
@@ -23,21 +23,21 @@ const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
       <Text
         style={{
           position: 'absolute',
-          top: screenHeight / 3,
-          left: 50,
+          top: screenHeight / 10,
+          right: 50,
         }}>
         {count}
       </Text>
       <TouchableOpacity
         onPressIn={() => setCount(count - 30)}
-        style={{ ...styles, backgroundColor: 'yellow', top: count - 30 }}
+        style={{ ...styles, left: 0, top: 0, height: screenHeight / 2, width: screenWidth, borderBottomColor: 'black', borderBottomWidth: 2 }}
       />
       <TouchableOpacity onPressIn={() => console.log('press in')}>
         <Animated.Image style={{ ...styles, top: count }} source={rabbitSource} />
       </TouchableOpacity>
       <TouchableOpacity
         onPressIn={() => setCount(count + 30)}
-        style={{ ...styles, backgroundColor: 'yellow', top: count + 30 }}
+        style={{ ...styles, left: 0, top: screenHeight / 2, height: screenHeight / 2, width: screenWidth }}
       />
     </>
   );
