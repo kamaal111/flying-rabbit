@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     left: 50,
     width: screenHeight / 10,
     height: screenHeight / 10,
+    // centers rabbit
+    transform: [
+      { translateY: -(screenHeight / 20) }
+    ]
   },
   halfScreen: {
     position: 'absolute',
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 const Rabbit = ({ rabbitSource }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 2.3);
+  const [count, setCount] = useState(screenHeight / 2);
 
   return (
     <>
