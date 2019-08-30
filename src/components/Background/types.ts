@@ -1,6 +1,6 @@
-import { number, shape, object } from 'prop-types';
+import { number, shape } from 'prop-types';
 
 export default shape({
   backgroundSource: number.isRequired,
-  styles: object,
+  carrotSource: number.isRequired,
 });
