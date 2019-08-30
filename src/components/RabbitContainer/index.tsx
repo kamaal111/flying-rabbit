@@ -5,18 +5,18 @@ import types from './types';
 import { screenHeight } from '../../dimensions';
 
 const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
-  const [count, setcount] = useState(screenHeight / 1.2);
-  const value = new Animated.Value(count);
+  const [count, setCount] = useState(screenHeight / 1.2);
+  // const value = new Animated.Value(count);
 
-  const animations: () => void = () => {
-    return Animated.sequence([
-      Animated.timing(value, {
-        toValue: count - 30,
-        duration: 500,
-        delay: 0,
-      }),
-    ]).start(() => setcount(count - 30));
-  };
+  // const animations: () => void = () => {
+  //   return Animated.sequence([
+  //     Animated.timing(value, {
+  //       toValue: count - 30,
+  //       duration: 0,
+  //       delay: 0,
+  //     }),
+  //   ]).start(() => setCount(count - 30));
+  // };
 
   return (
     <>
@@ -28,9 +28,17 @@ const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
         }}>
         {count}
       </Text>
-      <TouchableOpacity onPressIn={animations}>
-        <Animated.Image style={{ ...styles, top: value }} source={rabbitSource} />
+      <TouchableOpacity
+        onPressIn={() => setCount(count - 30)}
+        style={{ ...styles, backgroundColor: 'yellow', top: count - 30 }}
+      />
+      <TouchableOpacity onPressIn={() => console.log('press in')}>
+        <Animated.Image style={{ ...styles, top: count }} source={rabbitSource} />
       </TouchableOpacity>
+      <TouchableOpacity
+        onPressIn={() => setCount(count + 30)}
+        style={{ ...styles, backgroundColor: 'yellow', top: count + 30 }}
+      />
     </>
   );
 };
