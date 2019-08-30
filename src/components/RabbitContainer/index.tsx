@@ -5,7 +5,7 @@ import types from './types';
 import { screenHeight, screenWidth } from '../../dimensions';
 
 const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 2.2);
+  const [count, setCount] = useState(screenHeight / 2.3);
   // const value = new Animated.Value(count);
 
   // const animations: () => void = () => {
@@ -30,14 +30,14 @@ const Rabbit = ({ rabbitSource, styles }): JSX.Element => {
       </Text>
       <TouchableOpacity
         onPressIn={() => setCount(count - 30)}
-        style={{ backgroundColor: 'orange', top: 0, height: screenHeight / 2, width: screenWidth }}
+        style={{ ...styles, left: 0, top: 0, height: screenHeight / 2, width: screenWidth, borderBottomColor: 'black', borderBottomWidth: 2 }}
       />
       <TouchableOpacity onPressIn={() => console.log('press in')}>
         <Animated.Image style={{ ...styles, top: count }} source={rabbitSource} />
       </TouchableOpacity>
       <TouchableOpacity
         onPressIn={() => setCount(count + 30)}
-        style={{ backgroundColor: 'yellow', top: screenHeight / 2, height: screenHeight / 2, width: screenWidth }}
+        style={{ ...styles, left: 0, top: screenHeight / 2, height: screenHeight / 2, width: screenWidth }}
       />
     </>
   );
