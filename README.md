@@ -5,7 +5,7 @@
 3. `npm install` to install dependencies
 
 
-### Running and modifying your React Native application
+### Running and modifying Flappy Bird
 
 Option A: `npm run web`
 
