@@ -82,15 +82,9 @@ const rabbitGoDown: () => void = () => {
           borderBottomWidth: 2,
         }}
       />
-<<<<<<< HEAD
 
       <Animated.Image style={{ ...styles.rabbitImage, top: count }} source={rabbitSource} />
-
-=======
-      <TouchableOpacity onPressIn={() => console.log('press in')}>
-        <Animated.Image style={{ ...styles.rabbitImage, top: animationValue }} source={rabbitSource} />
-      </TouchableOpacity>
->>>>>>> feat/adjust-rabbit-rotation-on-touch
+      
       <TouchableOpacity
         onPressIn={() => rabbitGoDown()}
         style={{
