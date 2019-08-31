@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import Background from '../../components/Background';
-import RabbitContainer from '../../components/RabbitContainer';
+import BackgroundContainer from '../../components/BackgroundContainer';
+import CharacterContainer from '../../components/CharacterContainer';
+import CollectableContainer from '../../components/CollectableContainer';
 
 const styles = StyleSheet.create({ container: {} });
 
@@ -11,19 +12,13 @@ const Game = (): JSX.Element => {
   const backgroundSource: number = require('../../assets/backgrounds/stageLong.png');
   const carrotSource: number = require('../../assets/collectables/carrot.png');
 
+  console.log('RENDER!!!');
+
   return (
     <View style={styles.container}>
-      <Background backgroundSource={backgroundSource} carrotSource={carrotSource} />
-      {/* <View style={{ ...styles.container, backgroundColor: 'black' }}>
-        <Image
-          style={{
-            width: 40,
-            height: 40,
-          }}
-          source={carrotSource}
-        />
-      </View> */}
-      <RabbitContainer rabbitSource={rabbitSource} />
+      <BackgroundContainer source={backgroundSource} />
+      <CollectableContainer source={carrotSource} />
+      <CharacterContainer source={rabbitSource} />
     </View>
   );
 };
