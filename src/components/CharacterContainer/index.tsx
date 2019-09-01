@@ -9,7 +9,7 @@ import { screenHeight, screenWidth } from '../../dimensions';
 const styles = StyleSheet.create({
   characterImage: {
     position: 'absolute',
-    left: 50,
+    left: screenWidth / 20,
     width: screenHeight / 10,
     height: screenHeight / 10,
     // centers rabbit
@@ -28,7 +28,7 @@ const CharacterContainer = ({ source }): JSX.Element => {
 
   const animationValue: Animated.Value = new Animated.Value(count);
 
-  const characterAnimation: (direction: any) => void = direction => {
+  const characterAnimation = (direction: string): void => {
     if (direction === 'up') {
       return Animated.timing(animationValue, {
         toValue: count - screenHeight / 8,
@@ -47,12 +47,12 @@ const CharacterContainer = ({ source }): JSX.Element => {
     }
   };
 
-  const characterGoUp: () => void = () => {
+  const characterGoUp = (): void => {
     characterAnimation('up');
     styles.characterImage.transform[1].rotate = '-15deg';
   };
 
-  const characterGoDown: () => void = () => {
+  const characterGoDown = (): void => {
     characterAnimation('down');
     styles.characterImage.transform[1].rotate = '15deg';
   };
@@ -65,7 +65,7 @@ const CharacterContainer = ({ source }): JSX.Element => {
       characterGoUp={characterGoUp}
       styles={styles}
       animationValue={animationValue}
-      rabbitSource={source}
+      source={source}
     />
   );
 };

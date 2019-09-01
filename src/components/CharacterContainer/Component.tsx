@@ -10,7 +10,7 @@ const Component = ({
   characterGoDown,
   styles,
   animationValue,
-  rabbitSource,
+  source,
 }) => (
   <>
     <Text
@@ -31,10 +31,7 @@ const Component = ({
       }}
     />
 
-    <Animated.Image
-      style={{ ...styles.characterImage, top: animationValue }}
-      source={rabbitSource}
-    />
+    <Animated.Image style={{ ...styles.characterImage, top: animationValue }} source={source} />
 
     <TouchableOpacity
       onPressIn={() => characterGoDown()}
