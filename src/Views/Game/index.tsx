@@ -1,19 +1,26 @@
-import * as React from 'react';
-import { View } from 'react-native';
+import { default as React } from 'react';
+import { View, StyleSheet } from 'react-native';
 
-import Background from '../../components/Background';
-import RabbitContainer from '../../components/RabbitContainer';
+import BackgroundContainer from '../../components/BackgroundContainer';
+import CharacterContainer from '../../components/CharacterContainer';
+import CollectableContainer from '../../components/CollectableContainer';
+import Points from '../../components/Points';
 
-import styles from './styles';
+const styles = StyleSheet.create({ container: {} });
 
 const Game = (): JSX.Element => {
   const rabbitSource: number = require('../../assets/characters/rabbit.png');
   const backgroundSource: number = require('../../assets/backgrounds/stageLong.png');
+  const carrotSource: number = require('../../assets/collectables/carrot.png');
+
+  console.log('RENDER!!!');
 
   return (
     <View style={styles.container}>
-      <Background backgroundSource={backgroundSource} styles={styles.backgroundDimensions} />
-      <RabbitContainer rabbitSource={rabbitSource} styles={styles.rabbitImage} />
+      <BackgroundContainer source={backgroundSource} />
+      <CollectableContainer source={carrotSource} />
+      <CharacterContainer source={rabbitSource} />
+      <Points />
     </View>
   );
 };

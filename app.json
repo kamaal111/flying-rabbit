@@ -1,6 +1,6 @@
 {
   "name": "flappyBird",
-  "displayName": "Flappy Bird",
+  "displayName": "Flying Rabbit",
   "expo": {
     "name": "flappyBird",
     "slug": "expo-template-bare",
@@ -8,10 +8,7 @@
     "sdkVersion": "34.0.0",
     "version": "1.0.0",
     "entryPoint": "node_modules/expo/AppEntry.js",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ]
+    "orientation": "landscape",
+    "platforms": ["ios", "android", "web"]
   }
 }
