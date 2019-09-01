@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Text, TouchableOpacity, Animated } from 'react-native';
+import { TouchableOpacity, Animated } from 'react-native';
 
 import { CharacterComponentPropTypes } from './types';
 
 const Component = ({
   screenHeight,
-  count,
+
   characterGoUp,
   characterGoDown,
   styles,
@@ -13,14 +13,6 @@ const Component = ({
   source,
 }) => (
   <>
-    <Text
-      style={{
-        position: 'absolute',
-        top: screenHeight / 10,
-        right: 50,
-      }}>
-      {count}
-    </Text>
     <TouchableOpacity
       onPressIn={() => characterGoUp()}
       style={{
