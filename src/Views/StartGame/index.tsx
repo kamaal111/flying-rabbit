@@ -1,22 +1,18 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, StyleSheet } from 'react-native';
 
-const StartGame = ({ navigation }) => (
-  <View
-    style={{
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-    <Button
-      onPress={() =>
-        navigation.navigate('GameScreen', {
-          /**Props */
-        })
-      }
-      title="Start Game"
-    />
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+const StartGame = ({ navigation }): JSX.Element => (
+  <View style={styles.container}>
+    <Button onPress={() => navigation.navigate('GameScreen')} title="Start Game" />
   </View>
 );
 

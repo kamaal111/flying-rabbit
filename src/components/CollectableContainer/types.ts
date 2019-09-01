@@ -1,5 +1,6 @@
-import { shape, number } from 'prop-types';
+import { shape, number, func } from 'prop-types';
 
 export default shape({
   source: number.isRequired,
+  setPoints: func.isRequired,
 });

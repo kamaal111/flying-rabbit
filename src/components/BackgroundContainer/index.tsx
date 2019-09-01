@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 const BackgroundContainer = ({ source }): JSX.Element => {
   const animationValue: Animated.Value = new Animated.Value(0);
 
-  const animations: () => void = () => {
+  const animations = (): void => {
     return Animated.loop(
       Animated.timing(animationValue, {
         toValue: screenWidth,

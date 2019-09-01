@@ -1,6 +1,6 @@
 {
   "name": "flappyBird",
-  "displayName": "Flappy Bird",
+  "displayName": "Flying Rabbit",
   "expo": {
     "name": "flappyBird",
     "slug": "expo-template-bare",

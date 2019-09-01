@@ -1,8 +1,11 @@
 import { default as React, useEffect, useState } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
-import { screenWidth, screenHeight } from '../../dimensions';
+import { setPoints } from '../../actions';
+
 import types from './types';
+import { screenWidth, screenHeight } from '../../dimensions';
 
 const styles = StyleSheet.create({
   collectable: {
@@ -13,19 +16,27 @@ const styles = StyleSheet.create({
   },
 });
 
-const CollectableContainer = ({ source }): JSX.Element => {
-  const [randomValue, setRandomValue] = useState(Math.floor(Math.random() * screenHeight));
+const CollectableContainer = ({ source, setPoints: setPointsAction }): JSX.Element => {
+  const randomNumberGenerator = (min: number, max: number): number => {
+    return Math.random() * (max - min) + min;
+  };
+
+  const [randomValue, setRandomValue] = useState(randomNumberGenerator(screenHeight, 0));
 
   const animationValue: Animated.Value = new Animated.Value(0);
 
-  const animations: () => void = () => {
+  animationValue.addListener(({ value }) => {
+    setPointsAction(value);
+  });
+
+  const animations = (): void => {
     return Animated.timing(animationValue, {
       toValue: screenWidth,
       duration: 3000,
       delay: 0,
       // ensures animation is constant
       easing: Easing.bezier(0, 0, 0, 0),
-    }).start(() => setRandomValue(Math.floor(Math.random() * screenHeight)));
+    }).start(() => setRandomValue(randomNumberGenerator(screenHeight, 0)));
   };
 
   useEffect(() => {
@@ -44,6 +55,9 @@ const CollectableContainer = ({ source }): JSX.Element => {
   );
 };
 
-CollectableContainer.propTypes = { types };
+// CollectableContainer.propTypes = { types };
 
-export default CollectableContainer;
+export default connect(
+  null,
+  { setPoints },
+)(CollectableContainer);

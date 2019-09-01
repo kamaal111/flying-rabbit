@@ -1,9 +1,10 @@
-import * as React from 'react';
+import { default as React } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import BackgroundContainer from '../../components/BackgroundContainer';
 import CharacterContainer from '../../components/CharacterContainer';
 import CollectableContainer from '../../components/CollectableContainer';
+import Points from '../../components/Points';
 
 const styles = StyleSheet.create({ container: {} });
 
@@ -19,6 +20,7 @@ const Game = (): JSX.Element => {
       <BackgroundContainer source={backgroundSource} />
       <CollectableContainer source={carrotSource} />
       <CharacterContainer source={rabbitSource} />
+      <Points />
     </View>
   );
 };
