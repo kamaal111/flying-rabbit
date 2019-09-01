@@ -55,7 +55,7 @@ const CollectableContainer = ({ source, setPoints: setPointsAction }): JSX.Eleme
   );
 };
 
-// CollectableContainer.propTypes = { types };
+CollectableContainer.propTypes = { types };
 
 export default connect(
   null,

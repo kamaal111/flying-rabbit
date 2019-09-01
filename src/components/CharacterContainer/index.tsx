@@ -1,8 +1,10 @@
-import { default as React, useState } from 'react';
+import { default as React } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
 import Component from './Component';
 
+import { setCharacterPosition } from '../../actions';
 import { CharacterContainerPropTypes } from './types';
 import { screenHeight, screenWidth } from '../../dimensions';
 
@@ -23,27 +25,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const CharacterContainer = ({ source }): JSX.Element => {
-  const [count, setCount] = useState(screenHeight / 2);
-
-  const animationValue: Animated.Value = new Animated.Value(count);
+const CharacterContainer = ({
+  characterPosition,
+  source,
+  setCharacterPosition: setCharacterPositionAction,
+}): JSX.Element => {
+  const animationValue: Animated.Value = new Animated.Value(characterPosition);
 
   const characterAnimation = (direction: string): void => {
     if (direction === 'up') {
       return Animated.timing(animationValue, {
-        toValue: count - screenHeight / 8,
+        toValue: characterPosition - screenHeight / 8,
         duration: 120,
         // ensures animation is constant
         easing: Easing.linear,
-      }).start(() => setCount(count - screenHeight / 8));
+      }).start(() => setCharacterPositionAction(characterPosition - screenHeight / 8));
     }
 
     if (direction === 'down') {
       return Animated.timing(animationValue, {
-        toValue: count + screenHeight / 8,
+        toValue: characterPosition + screenHeight / 8,
         duration: 120,
         easing: Easing.linear,
-      }).start(() => setCount(count + screenHeight / 8));
+      }).start(() => setCharacterPositionAction(characterPosition + screenHeight / 8));
     }
   };
 
@@ -60,7 +64,6 @@ const CharacterContainer = ({ source }): JSX.Element => {
   return (
     <Component
       screenHeight={screenHeight}
-      count={count}
       characterGoDown={characterGoDown}
       characterGoUp={characterGoUp}
       styles={styles}
@@ -72,4 +75,9 @@ const CharacterContainer = ({ source }): JSX.Element => {
 
 CharacterContainer.propTypes = { CharacterContainerPropTypes };
 
-export default CharacterContainer;
+const mapStateToProps = ({ characterPosition }) => ({ characterPosition });
+
+export default connect(
+  mapStateToProps,
+  { setCharacterPosition },
+)(CharacterContainer);
