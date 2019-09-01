@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
-import gameState from './gameState';
 
-export default combineReducers({ gameState });
+import characterPosition from './characterPosition';
+import points from './points';
+
+export default combineReducers({ characterPosition, points });
