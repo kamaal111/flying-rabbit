@@ -2,8 +2,6 @@ import { number, shape, func, object } from 'prop-types';
 
 const CharacterContainer = {
   source: number.isRequired,
-  characterPosition: number.isRequired,
-  setCharacterPosition: func.isRequired,
 };
 
 const CharacterComPonent = {

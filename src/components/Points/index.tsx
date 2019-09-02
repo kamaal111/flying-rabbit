@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 
 import { screenHeight } from '../../dimensions';
 import types from './types';
+import { useCharacterPositionValue } from '../../Context/GameStateContext';
 
-const Points = ({ character, points }): JSX.Element => {
+const Points = ({ points }): JSX.Element => {
+  const [character] = useCharacterPositionValue();
+
   return (
     <>
       <Text
@@ -30,6 +33,6 @@ const Points = ({ character, points }): JSX.Element => {
 
 Points.propTypes = { types };
 
-const mapStateToProps = ({ character, points }) => ({ character, points });
+const mapStateToProps = ({ points }) => ({ points });
 
 export default connect(mapStateToProps)(Points);
