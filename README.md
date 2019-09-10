@@ -1,23 +1,17 @@
-### Setup
+### Initial setup
 
-1. git clone the repository
+1. git clone `git@github.com:kamaal111/flappy-bird.git`
 2. cd flappyBird
-3. npm start
+3. `npm install` to install dependencies
 
-### Running your React Native application
 
-Install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer. On Android, use the Expo app to scan the QR code from your terminal to open your project. On iOS, follow on-screen instructions to get a link.
+### Running and modifying Flappy Bird
 
-### Modifying your app
+Option A: `npm run web`
 
-Now that you have successfully run the app, let's modify it. Open App.js in your text editor of choice and edit some lines. The application should reload automatically once you save your changes.
+Install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer. On your device, use the Expo app (or camera) to scan the QR code from your terminal (after running `npm run web`) to open your project. Your app should open within the Expo app and it should update every time you save your files in the code editor.
 
-That's it!
 
-Congratulations! You've successfully run and modified your first React Native app.
+Option B: `npm run ios`
 
-Running your app on a simulator or virtual device
-
-Expo CLI makes it really easy to run your React Native app on a physical device without setting up a development environment. If you want to run your app on the iOS Simulator or an Android Virtual Device, please refer to the instructions for "React Native CLI Quickstart" to learn how to install Xcode or set up your Android development environment.
-
-Once you've set these up, you can launch your app on an Android Virtual Device by running npm run android, or on the iOS Simulator by running npm run ios (macOS only).
+Install Xcode for iOS and Android Studio for Android.

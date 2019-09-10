@@ -6,6 +6,8 @@ import CharacterContainer from '../../components/CharacterContainer';
 import CollectableContainer from '../../components/CollectableContainer';
 import Points from '../../components/Points';
 
+import { CharacterPositionProvider } from '../../Context/GameStateContext';
+
 const styles = StyleSheet.create({ container: {} });
 
 const Game = (): JSX.Element => {
@@ -16,12 +18,14 @@ const Game = (): JSX.Element => {
   console.log('RENDER!!!');
 
   return (
-    <View style={styles.container}>
-      <BackgroundContainer source={backgroundSource} />
-      <CollectableContainer source={carrotSource} />
-      <CharacterContainer source={rabbitSource} />
-      <Points />
-    </View>
+    <CharacterPositionProvider>
+      <View style={styles.container}>
+        <BackgroundContainer source={backgroundSource} />
+        <CollectableContainer source={carrotSource} />
+        <CharacterContainer source={rabbitSource} />
+        <Points />
+      </View>
+    </CharacterPositionProvider>
   );
 };
 

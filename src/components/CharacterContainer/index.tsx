@@ -1,12 +1,11 @@
 import { default as React } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
 
 import Component from './Component';
 
-import { setCharacterPosition } from '../../actions';
 import { CharacterContainerPropTypes } from './types';
 import { screenHeight, screenWidth } from '../../dimensions';
+import { useCharacterPositionValue } from '../../Context/GameStateContext';
 
 const styles = StyleSheet.create({
   characterImage: {
@@ -25,11 +24,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const CharacterContainer = ({
-  characterPosition,
-  source,
-  setCharacterPosition: setCharacterPositionAction,
-}): JSX.Element => {
+const CharacterContainer = ({ source }): JSX.Element => {
+  const [characterPosition, setCharacterPositionAction] = useCharacterPositionValue();
+
   const animationValue: Animated.Value = new Animated.Value(characterPosition);
 
   const characterAnimation = (direction: string): void => {
@@ -75,9 +72,4 @@ const CharacterContainer = ({
 
 CharacterContainer.propTypes = { CharacterContainerPropTypes };
 
-const mapStateToProps = ({ characterPosition }) => ({ characterPosition });
-
-export default connect(
-  mapStateToProps,
-  { setCharacterPosition },
-)(CharacterContainer);
+export default CharacterContainer;
