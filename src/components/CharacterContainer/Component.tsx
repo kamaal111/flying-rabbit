@@ -18,8 +18,8 @@ const Component = ({
       style={{
         ...styles.halfScreen,
         top: 0,
-        borderBottomColor: 'black',
-        borderBottomWidth: 2,
+        // borderBottomColor: 'black',
+        // borderBottomWidth: 2,
       }}
     />
 
